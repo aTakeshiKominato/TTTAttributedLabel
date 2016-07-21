@@ -35,6 +35,10 @@
     
     NSString *filePath = [[NSBundle mainBundle] pathForResource:@"espressos" ofType:@"txt"];
     self.espressos = [[NSString stringWithContentsOfFile:filePath usedEncoding:nil error:nil] componentsSeparatedByCharactersInSet:[NSCharacterSet newlineCharacterSet]];
+    
+    NSMutableArray *array = self.espressos.mutableCopy;
+    [array addObject:@"Emoji: 🍺\n\n"];
+    self.espressos = array.copy;
         
     return self;
 }

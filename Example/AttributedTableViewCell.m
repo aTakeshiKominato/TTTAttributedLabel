@@ -63,7 +63,7 @@ static inline NSRegularExpression * ParenthesisRegularExpression() {
     self.summaryLabel.font = [UIFont systemFontOfSize:kEspressoDescriptionTextFontSize];
     self.summaryLabel.textColor = [UIColor darkGrayColor];
     self.summaryLabel.lineBreakMode = NSLineBreakByWordWrapping;
-    self.summaryLabel.numberOfLines = 0;
+    self.summaryLabel.numberOfLines = 2;
     self.summaryLabel.linkAttributes = [NSDictionary dictionaryWithObject:[NSNumber numberWithBool:YES] forKey:(__bridge NSString *)kCTUnderlineStyleAttributeName];
     
     NSMutableDictionary *mutableActiveLinkAttributes = [NSMutableDictionary dictionary];
@@ -128,6 +128,7 @@ static inline NSRegularExpression * ParenthesisRegularExpression() {
         
         return mutableAttributedString;
     }];
+    [self.summaryLabel intrinsicContentSize]; //TEST
     
     NSRegularExpression *regexp = NameRegularExpression();
     NSRange linkRange = [regexp rangeOfFirstMatchInString:self.summaryText options:0 range:NSMakeRange(0, [self.summaryText length])];
